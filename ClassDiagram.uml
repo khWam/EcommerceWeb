@@ -1,41 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_qD7qIACoEeaM-rZVOSLjrw" name="classDiagram">
-  <packageImport xmi:type="uml:PackageImport" xmi:id="_c1VFYACpEeaM-rZVOSLjrw">
-    <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
-  </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_6IsHMACoEeaM-rZVOSLjrw" name="customer">
-    <generalization xmi:type="uml:Generalization" xmi:id="_knuUkACyEeaM-rZVOSLjrw" general="_kOHXMACxEeaM-rZVOSLjrw"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zY6nEACpEeaM-rZVOSLjrw" name="phone" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zxjwkACpEeaM-rZVOSLjrw" name="codePostal" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_0YOvAACpEeaM-rZVOSLjrw" name="city" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_xz1JgACyEeaM-rZVOSLjrw" name="adress" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_kOHXMACxEeaM-rZVOSLjrw" name="User" isAbstract="true">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_RQVYMACpEeaM-rZVOSLjrw" name="id" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ysLc4ACpEeaM-rZVOSLjrw" name="name" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_zDE58ACpEeaM-rZVOSLjrw" name="email" visibility="private">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
-    </ownedAttribute>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_pILoAACyEeaM-rZVOSLjrw" name="Admin">
-    <generalization xmi:type="uml:Generalization" xmi:id="_YPmE0ACzEeaM-rZVOSLjrw" general="_kOHXMACxEeaM-rZVOSLjrw"/>
-  </packagedElement>
-  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jY45AACpEeaM-rZVOSLjrw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jY6HIACpEeaM-rZVOSLjrw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
-    </eAnnotations>
-    <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
-  </profileApplication>
-</uml:Model>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:java="http://www.eclipse.org/papyrus/JAVA/1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_qD7qIACoEeaM-rZVOSLjrw" name="classDiagram">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_c1VFYACpEeaM-rZVOSLjrw">
+      <importedPackage xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6IsHMACoEeaM-rZVOSLjrw" name="customer">
+      <generalization xmi:type="uml:Generalization" xmi:id="_knuUkACyEeaM-rZVOSLjrw" general="_kOHXMACxEeaM-rZVOSLjrw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zY6nEACpEeaM-rZVOSLjrw" name="phone" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zxjwkACpEeaM-rZVOSLjrw" name="codePostal" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0YOvAACpEeaM-rZVOSLjrw" name="city" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xz1JgACyEeaM-rZVOSLjrw" name="adress" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kOHXMACxEeaM-rZVOSLjrw" name="User" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RQVYMACpEeaM-rZVOSLjrw" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ysLc4ACpEeaM-rZVOSLjrw" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zDE58ACpEeaM-rZVOSLjrw" name="email" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_pILoAACyEeaM-rZVOSLjrw" name="Admin" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="_YPmE0ACzEeaM-rZVOSLjrw" general="_kOHXMACxEeaM-rZVOSLjrw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_n8hbQAC0EeaM-rZVOSLjrw" name="category">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rwTO4AC0EeaM-rZVOSLjrw" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sNikgAC0EeaM-rZVOSLjrw" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_57dGAAC0EeaM-rZVOSLjrw" name="customerOrder">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-0NksAC0EeaM-rZVOSLjrw" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__Tru8AC0EeaM-rZVOSLjrw" name="amount" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BTOk0AC1EeaM-rZVOSLjrw" name="date_created" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BtjJUAC1EeaM-rZVOSLjrw" name="ConfirmationNum" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EmAuwAC2EeaM-rZVOSLjrw" name="product">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LeXGoAC2EeaM-rZVOSLjrw" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MDGLYAC2EeaM-rZVOSLjrw" name="name" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MUlkAAC2EeaM-rZVOSLjrw" name="price" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Mn5hkAC2EeaM-rZVOSLjrw" name="description" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xF-BIAC2EeaM-rZVOSLjrw" name="last_update" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jY45AACpEeaM-rZVOSLjrw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jY6HIACpEeaM-rZVOSLjrw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/JAVA/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Papyrus_JAVA_PROFILES/java.profile.uml#_6TYLMN0yEd6P1qtlpBOZyg"/>
+    </profileApplication>
+  </uml:Model>
+  <java:JavaClass xmi:id="_es-GAAC1EeaM-rZVOSLjrw" base_Classifier="_6IsHMACoEeaM-rZVOSLjrw"/>
+  <java:JavaClass xmi:id="_jrnxUAC1EeaM-rZVOSLjrw" base_Classifier="_pILoAACyEeaM-rZVOSLjrw"/>
+  <java:JavaClass xmi:id="_mSH5gAC1EeaM-rZVOSLjrw" base_Classifier="_57dGAAC0EeaM-rZVOSLjrw"/>
+  <java:JavaClass xmi:id="_oUuqcAC1EeaM-rZVOSLjrw" base_Classifier="_n8hbQAC0EeaM-rZVOSLjrw"/>
+  <java:JavaProperty xmi:id="_p6IiAAC1EeaM-rZVOSLjrw" base_Property="_BTOk0AC1EeaM-rZVOSLjrw"/>
+  <java:JavaClass xmi:id="_CHNUkAC3EeaM-rZVOSLjrw" base_Classifier="_EmAuwAC2EeaM-rZVOSLjrw"/>
+</xmi:XMI>
