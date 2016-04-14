@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends User {
-
+  static int CLASS_ID_INCREMENT;
 	private String adress;
 	private short codePostal;
 	private String phone;
@@ -17,24 +17,25 @@ public class Customer extends User {
 	  ----------------------------------------------------------------------------*/
 
 	// *** A voir par la suite si on doit instensier le customer order
-	public Customer(int id, String email, String name, String adress, short codePostal, String phone, String city,
+	public Customer(String email, String name, String adress, short codePostal, String phone, String city,
 			CustomerOrder customerorder) {
-		super(id, email, name);
+		super(CLASS_ID_INCREMENT, email, name);
 		this.adress = adress;
 		this.codePostal = codePostal;
 		this.phone = phone;
 		this.city = city;
 		this.customerorder = customerorder;
+		CLASS_ID_INCREMENT++;
 	}
 
 
-	public Customer(int id, String email, String name, String adress, short codePostal, String phone, String city) {
-		super(id, email, name);
+	public Customer(String email, String name, String adress, short codePostal, String phone, String city) {
+		super(CLASS_ID_INCREMENT, email, name);
 		this.adress = adress;
 		this.codePostal = codePostal;
 		this.phone = phone;
 		this.city = city;
-
+		CLASS_ID_INCREMENT++;
 	}
 
 	/*-----------------------------------------------------------------------------
@@ -64,31 +65,23 @@ public class Customer extends User {
 	 if(customerorder==null){
 		 this.customerorder = new CustomerOrder(); // faire très attention à la definition de customer order 
 	 }
-	 List<Product> list = this.customerorder.getProduct();
-	 list.add(oneProduct);
-	 this.customerorder.setProduct(list);
-	 this.customerorder.setAmount(this.customerorder.getAmount()+1);
+	 this.customerorder.addProduct(oneProduct);
 	 
 	}
 
 
 	@Override
-	public void removeProduct(Product oneProduct) {
+	public void removeProduct(Product oneProduct) throws Exception {
 		// TODO Auto-generated method stub
 	if(customerorder!=null){
 		if (this.customerorder.getAmount()>0 && this.customerorder.getProduct().size()!=0){
-			for(Product p:this.customerorder.getProduct()){
-				if(p.getId()==oneProduct.getId()){
-					List<Product> list = this.customerorder.getProduct();
-	                list.remove(p);
-	                this.customerorder.setProduct(list);
-	                break;
+			this.customerorder.removeProduct(oneProduct);
 				}
 				
 			}
 		}
-	}
-	}
+	
+	
 
 
 	@Override

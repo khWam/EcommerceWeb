@@ -30,7 +30,7 @@ public abstract class User {
 	  public void addProduct(Product product){}
 
 	  //remove product from CustomerOrder
-	  public void removeProduct(Product oneProduct){}
+	  public void removeProduct(Product oneProduct)throws Exception {}
 
 	  //pass order
 	  public boolean passOrder() {
