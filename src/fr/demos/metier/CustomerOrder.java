@@ -52,6 +52,23 @@ public class CustomerOrder {
 		CLASS_ID_INCREMENT++;
 		CONFIRMATION_INCREMENT++;
 	}
+
+	public CustomerOrder(int amount, List<Product> product) {
+		super();
+		this.id = CLASS_ID_INCREMENT;
+		this.date_created = date_created;
+		this.amount = amount;
+		ConfirmationNum = CONFIRMATION_INCREMENT;
+		this.product = product;
+			
+		// incrementation des variables de class pour la prochaine invocation
+		CLASS_ID_INCREMENT++;
+		CONFIRMATION_INCREMENT++;
+	}
+	
+	
+	
+	
 	
 	public int productCardinale(Product oneProduct){
 		int cardinale=0;

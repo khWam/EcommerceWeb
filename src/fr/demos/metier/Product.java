@@ -1,36 +1,52 @@
 package fr.demos.metier;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 public class Product {
 
-	/**
-	 * 
-	 */
-	private String description;
-	/**
-	 * 
-	 */
-	private int price;
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * 
-	 */
 	private int id;
-	/**
-	 * 
-	 */
+	private String name;
+	private String description;
+	private int price;
 	private Timestamp last_update;
-	/**
-	 * 
-	 */
-	private String quantity;
-	/**
-	 * 
-	 */
+	private int quantity;
 	public Category category;
+	
+	
+	
+	
+	
+	
+	
+	public Product(int id, String name, String description, int price, Timestamp last_update, int quantity,
+			Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.last_update = last_update;
+		this.quantity = quantity;
+		this.category = category;
+
+	}
+	
+	
+	
+	public Product(int id, String name, String description, int price, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.category = category;
+		this.quantity=0;
+		Calendar calendar = Calendar.getInstance();
+	    this.last_update = new Timestamp(calendar.getTime().getTime());	
+	    }
+
+
+
 	/**
 	 * Getter of description
 	 */
@@ -94,13 +110,13 @@ public class Product {
 	/**
 	 * Getter of quantity
 	 */
-	public String getQuantity() {
+	public int getQuantity() {
 	 	 return quantity; 
 	}
 	/**
 	 * Setter of quantity
 	 */
-	public void setQuantity(String quantity) { 
+	public void setQuantity(int quantity) { 
 		 this.quantity = quantity; 
 	}
 	/**

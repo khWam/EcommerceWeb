@@ -3,17 +3,14 @@ package fr.demos.metier;
 
 public class Category {
 
-	/**
-	 * 
-	 */
 	private String name;
-	/**
-	 * 
-	 */
 	private int id;
-	/**
-	 * Getter of name
-	 */
+
+	public Category(String name, int id) {
+		super();
+		this.name = name;
+		this.id = id;
+	}
 	public String getName() {
 	 	 return name; 
 	}
