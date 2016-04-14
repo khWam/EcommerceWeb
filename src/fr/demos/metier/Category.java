@@ -1,3 +1,4 @@
+package fr.demos.metier;
 
 
 public class Category {

@@ -1,3 +1,4 @@
+package fr.demos.metier;
 import java.sql.Timestamp;
 
 public class Product {
