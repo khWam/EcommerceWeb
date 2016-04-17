@@ -56,7 +56,9 @@ public class CustomerOrder {
 	public CustomerOrder(int amount, List<Product> product) {
 		super();
 		this.id = CLASS_ID_INCREMENT;
-		this.date_created = date_created;
+		Calendar calendar = Calendar.getInstance();
+	    this.date_created = new Timestamp(calendar.getTime().getTime());	
+		
 		this.amount = amount;
 		ConfirmationNum = CONFIRMATION_INCREMENT;
 		this.product = product;
