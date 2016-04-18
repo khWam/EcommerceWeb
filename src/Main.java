@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import fr.demos.metier.CatalogProduct;
 import fr.demos.metier.Category;
 import fr.demos.metier.Customer;
 import fr.demos.metier.CustomerOrder;
@@ -28,6 +29,8 @@ public class Main {
 		list1 =c1.saveUser();
 		System.out.println(list1);
 		
+		CatalogProduct  cat= new CatalogProduct();
+		System.out.println(cat.getProductList());
 		
 //		try {
 //			c1.addProduct(l1);
