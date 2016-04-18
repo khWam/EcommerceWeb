@@ -13,7 +13,7 @@ public class CatalogProduct {
 
 		CatalogProduct.addProduct(new Livre("Guerre et paix", "Magistral!", 25, new Category("Papier"),10, " 978-2253088974", "Tolstoi",
 				"Hachett", "Roman Historique"));
-		CatalogProduct.addProduct(new Livre("la chute des geants", "Magnifique!", 15, new Category("Papier"),10, "978-2221110829", "Folett",
+		CatalogProduct.addProduct(new Livre("La chute des geants", "Magnifique!", 15, new Category("Papier"),10, "978-2221110829", "Folett",
 				"Hachett", "Roman Historique"));
 		CatalogProduct.addProduct(new Livre("The Hobbit", "The best!", 10, new Category("Papier"),10, "978-0395071229", "J. R. R. Tolkien",
 				"Houghton Mifflin", "Roman fantastique"));
