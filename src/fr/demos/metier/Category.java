@@ -6,10 +6,10 @@ public class Category {
 	private String name;
 	private int id;
 
-	public Category(String name, int id) {
+	public Category(String name) {
 		super();
 		this.name = name;
-		this.id = id;
+		//this.id = id;
 	}
 	public String getName() {
 	 	 return name; 
@@ -29,8 +29,8 @@ public class Category {
 	/**
 	 * Setter of id
 	 */
-	public void setId(int id) { 
-		 this.id = id; 
-	} 
+//	public void setId(int id) { 
+//		 this.id = id; 
+//	} 
 
 }

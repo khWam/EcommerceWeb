@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends User {
-  static int CLASS_ID_INCREMENT;
+	static int CLASS_ID_INCREMENT;
 	private String adress;
-	private short codePostal;
+	private int codePostal;
 	private String phone;
 	private String city;
 	public CustomerOrder customerorder;
@@ -17,38 +17,38 @@ public class Customer extends User {
 	  ----------------------------------------------------------------------------*/
 
 	// *** A voir par la suite si on doit instensier le customer order
-	public Customer(String email, String name, String adress, short codePostal, String phone, String city,
+	public Customer(String email, String name, String adress, int codePostal, String phone, String city,
 			CustomerOrder customerorder) {
-		super(CLASS_ID_INCREMENT, email, name);
+		super(email, name);
 		this.adress = adress;
 		this.codePostal = codePostal;
 		this.phone = phone;
 		this.city = city;
 		this.customerorder = customerorder;
-		CLASS_ID_INCREMENT++;
+		//CLASS_ID_INCREMENT++;
 	}
 
 
-	public Customer(String email, String name, String adress, short codePostal, String phone, String city) {
-		super(CLASS_ID_INCREMENT, email, name);
+	public Customer(String email, String name, String adress, int codePostal, String phone, String city) {
+		super(email, name);
 		this.adress = adress;
 		this.codePostal = codePostal;
 		this.phone = phone;
 		this.city = city;
-		CLASS_ID_INCREMENT++;
+		//CLASS_ID_INCREMENT++;
 	}
 
 	/*-----------------------------------------------------------------------------
 	 * 2- les methodes
 	----------------------------------------------------------------------------*/
 
-	
+
 
 
 	@Override
 	public ArrayList<Object> saveUser() {
 		ArrayList<Object> listCustomerAtrib = new ArrayList<Object>();
-		listCustomerAtrib.add(this.getId());
+		//listCustomerAtrib.add(this.getId());
 		listCustomerAtrib.add(this.getName());
 		listCustomerAtrib.add(this.getEmail());
 		listCustomerAtrib.add(this.getPhone());
@@ -61,43 +61,40 @@ public class Customer extends User {
 
 
 	@Override
-	public void addProduct(Product oneProduct){
-	 if(customerorder==null){
-		 this.customerorder = new CustomerOrder(); // faire très attention à la definition de customer order 
-	 }
-	 this.customerorder.addProduct(oneProduct);
-	 
+	public void addProduct(Product oneProduct) throws Exception{
+		if(customerorder==null){
+			this.customerorder = new CustomerOrder(); // faire très attention à la definition de customer order 
+		}
+		this.customerorder.addProduct(oneProduct);
+
 	}
 
 
 	@Override
 	public void removeProduct(Product oneProduct) throws Exception {
-		// TODO Auto-generated method stub
-	if(customerorder!=null){
-		if (this.customerorder.getAmount()>0 && this.customerorder.getProduct().size()!=0){
-			this.customerorder.removeProduct(oneProduct);
-				}
-				
-			}
-		}
-	
-	
+		if(customerorder==null){throw new MessageException("le panier n'est pas défini (null)!");}
+		else{this.customerorder.removeProduct(oneProduct);}
+
+
+	}
+
+
 
 
 	@Override
 	public boolean passOrder() {
 		boolean test = false;
-	if (!this.saveUser().isEmpty()&&this.customerorder.getProduct().size()>0){
-		test =true;
-	};
-	return test;
+		if (!this.saveUser().isEmpty()&&this.customerorder.getProduct().size()>0){
+			test =true;
+		};
+		return test;
 	}
 
-	 /*-----------------------------------------------------------------------------
-	  * 3-Getters and Setters
+	/*-----------------------------------------------------------------------------
+	 * 3-Getters and Setters
 	  ----------------------------------------------------------------------------*/
-	
-	
+
+
 	/**
 	 * Getter of adress
 	 */
@@ -113,13 +110,13 @@ public class Customer extends User {
 	/**
 	 * Getter of codePostal
 	 */
-	public short getCodePostal() {
+	public int getCodePostal() {
 		return codePostal; 
 	}
 	/**
 	 * Setter of codePostal
 	 */
-	public void setCodePostal(short codePostal) { 
+	public void setCodePostal(int codePostal) { 
 		this.codePostal = codePostal; 
 	}
 	/**
@@ -157,6 +154,14 @@ public class Customer extends User {
 	 */
 	public void setCustomerorder(CustomerOrder customerorder) { 
 		this.customerorder = customerorder; 
+	}
+
+
+	@Override
+	public String toString() {
+		return "Customer [adress=" + adress + ", codePostal=" + codePostal + ", phone=" + phone + ", city=" + city
+				+ ", customerorder=" + customerorder + ", getEmail()=" + getEmail() + ", getName()=" + getName()
+				+ ", getId()=" + getId() + "]";
 	} 
 
 }

@@ -10,7 +10,7 @@ public class Product {
 	private int price;
 	private Timestamp last_update;
 	private int quantity;
-	public Category category;
+	private Category category;
 	
 	
 	
@@ -18,10 +18,10 @@ public class Product {
 	
 	
 	
-	public Product(int id, String name, String description, int price, Timestamp last_update, int quantity,
+	public Product(String name, String description, int price, Timestamp last_update, int quantity,
 			Category category) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -33,9 +33,21 @@ public class Product {
 	
 	
 	
-	public Product(int id, String name, String description, int price, Category category) {
+	public Product( String name, String description, int price, Category category, int quantity) {
 		super();
-		this.id = id;
+		//this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.category = category;
+		this.quantity=quantity;
+		Calendar calendar = Calendar.getInstance();
+	    this.last_update = new Timestamp(calendar.getTime().getTime());	
+	    }
+	
+	public Product( String name, String description, int price, Category category) {
+		super();
+		//this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
@@ -45,7 +57,14 @@ public class Product {
 	    this.last_update = new Timestamp(calendar.getTime().getTime());	
 	    }
 
-
+	
+	public void increment(){
+		this.quantity++;
+	}
+	public void decrement(){
+		this.quantity--;
+	}
+	
 
 	/**
 	 * Getter of description
