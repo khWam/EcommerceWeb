@@ -85,98 +85,79 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid --> </nav>
-	<div class="wrapper">
-		<div class="jumbotron">
-			<c:forEach var="product" items="${listProduct}">
-				<form class="custom" onsubmit="return false" method="post"
-					action="/product/3-pasta-s">
-					<div class="row" class="product">
-						<div class="product-page content " id="product-page">
-							<div class="col-md-9">
-								<h2>${product.getName()}</h2>
-								<br>
-								<p>
-								<p>${product.getDescription()}</p>
-								</p>
+	 <div class="wrapper">
+    	<div class="row content" id="cartt">
+  <form  class="custom" method="post" action="/cart">
+    <div id="cart-content"><div class="row">
+    
 
-								<!-- <img
-								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_750x750-jpg-crop.png?1414098515"
-								alt="3 Pasta&#039;s"> <img
-								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4b_750x750-jpg-crop.png?1414098515"
-								alt="3 Pasta&#039;s"> <img
-								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4c_750x750-jpg-crop.png?1414098516"
-								alt="3 Pasta&#039;s"> -->
-							</div>
-
-
-							<!-- PRODUCT DETAIL -->
-							<div class="product-detail col-md-3">
-
-								<div class="col-md-12">
-									<!-- 	<small class="previous-price">$13.00</small> -->
-
-									<h3>$${product.getPrice()}</h3>
-
-									<div class="product-attributes">
-										<table class="table table-bordered">
-											<tr>
-												<th>Stock</th>
-												<td>${product.getQuantity()}</td>
-											</tr>
-										</table>
-									</div>
-
-
-
-									<!-- 	<div class="product-options">
-									<label class="title" for="option-0">Portion</label><br> <select
-										id="option-0" name="options[3]" class="select-option"
-										data-ajax-handler="shop:product"
-										data-ajax-update="#product-page=shop-product">
-										<option value="options-1-eceaa402-80ca-49a0">1</option>
-										<option value="options-1-52fb6c2d-44bd-4954">2</option>
-										<option value="options-1-e981cf35-f299-4076">3</option>
-									</select>
-								</div>
-								<div class="product-options">
-									<label class="title" for="option-1">Pasta Option</label><br>
-									<select id="option-1" name="options[4]" class="select-option"
-										data-ajax-handler="shop:product"
-										data-ajax-update="#product-page=shop-product">
-										<option value="options-2-2b30ea43-2e92-46f1">Normal</option>
-										<option value="options-2-b3a8e9cf-dc42-4379">Gluten
-											Free</option>
-										<option value="options-2-03eb2c69-d8b1-4046">Wholewheat</option>
-									</select>
-								</div>
- -->
-
-
-									<input type="hidden" name="productId" value="8" />
-									<div class="add-cart-holder form-group">
-
-										<div class="quantity-selector">
-											<label class="title">Quantity</label> <input
-												class="form-control quantity" type="text" value="1"
-												name="quantity" />
-										</div>
-									</div>
-
-									<a class="btn btn-important btn-add-cart" href="#"
-										data-ajax-handler="shop:onAddToCart"
-										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
-										to Cart </a><br> <br>
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-				</form>
-			</c:forEach>
+<p id="title-p-d">SHOPPING CART</p>
+<div class="col-md-12">
+    
+    <div class="items-holder">
+        
+        	<div class="row content" id="cart-items">
+		<div class="col-sm-6">
+			Product
+		</div>
+		<div class="col-sm-3">
+			Quantity
+		</div>
+		<div class="col-sm-3">
+			Item Total
 		</div>
 	</div>
 
+
+
+<c:forEach var="product" items="${listProductCart}">
+	<div class="row" id="cart-row">
+
+			<div class="col-sm-2" id="cart-img">
+				<img src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_autoxauto-jpg-keep-ratio.png?1416257987" alt="3 Pasta&#039;s">
+			</div>
+		<div class="row" id="align-middle">
+			<div class="col-sm-4">
+				<a href="/product/3-pasta-s">${product.get(0)}</a>
+        			</div>
+			<div class="col-sm-2">
+									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.get(1)}">
+							</div>
+			<div class="col-sm-3 col-xs-12" id="item-middle">
+				<p>
+					<span class="pull-left">$${product.get(2)}</span>
+											<a class="col-sm-3" id="item-close" href="#close" 
+						data-ajax-handler="shop:cart" 
+												data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
+						data-ajax-extra-fields="delete_item='57160c4917c17'"><i class="fa fa-times" id="remove-cart-item"></i></a>
+									</p>
+
+				
+			</div>
+		</div>
+	</div>
+	</c:forEach>
+
+    </div>
+
+</div>
+
+<div class="col-md-3 row">
+    <p>Order Summary</p>
+    <ul class="price-list list-group">
+                        <li class="list-group-item important">Total: $20.00</li>
+    </ul>
+    <div class="col-xs-12 form-group" id="coupon">
+        <input type="text" class="form-control" id="coupon-code" name="coupon" placeholder="Coupon Code" value="" />
+    </div>
+    <a class="btn btn-default col-xs-12 btn-lg solid" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
+        <a class="col-xs-12 btn btn-important solid btn-lg" href="//hype.lemonstand.com/checkout-start">Checkout</a>
+    </div>
+
+</div></div>
+  </form>    
+ </div> 
+    </div>
 	<div class="main-footer">
 		<div class="row">
 			<div class="col-md-12">

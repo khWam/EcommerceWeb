@@ -162,7 +162,7 @@
 										</div>
 									</div>
 
-									<a class="btn btn-important btn-add-cart" href="#"
+									<a class="btn btn-important btn-add-cart" href="CartControleur?prodName=${product.getName()}&prodQuantity=${product.getQuantity()}&prodPrice=${product.getPrice()}"
 										data-ajax-handler="shop:onAddToCart"
 										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
 										to Cart </a><br> <br>
