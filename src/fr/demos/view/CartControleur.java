@@ -19,64 +19,67 @@ import fr.demos.metier.Product;
 @WebServlet(description = "updates the cart", urlPatterns = { "/CartControleur" })
 public class CartControleur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CartControleur() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	//@SuppressWarnings("unchecked")
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//doPost(request, response);
+	public CartControleur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	// @SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// response.getWriter().append("Served at:
+		// ").append(request.getContextPath());
+		// doPost(request, response);
 		RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		ArrayList<ArrayList<String>> listProduit;
 		if (session.isNew()) {
+			System.out.println("Session nouvelle");
 			listProduit = new ArrayList<>();
 			session.setAttribute("listProductCart", listProduit);
 		}
-		
-		ArrayList<String> produit = new ArrayList<>();
-		
-		
-		listProduit = (ArrayList<ArrayList<String>>)session.getAttribute("listeProductCar");
-		if(listProduit.equals(null)){
-		listProduit = new ArrayList<>();
-		}
 
+		ArrayList<String> produit = new ArrayList<>();
+
+		listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCar");
+		if (listProduit == null) {
+			listProduit = new ArrayList<>();
+			session.setAttribute("listProductCart", listProduit);
+		}
 		String prodname = request.getParameter("prodName");
-		prodname =prodname.trim();
+		prodname = prodname.trim();
 		String prodQuantity = request.getParameter("prodQuantity");
-		prodQuantity =prodQuantity.trim();
+		prodQuantity = prodQuantity.trim();
 		String prodPrice = request.getParameter("prodPrice");
-		prodPrice =prodPrice.trim();
-		
+		prodPrice = prodPrice.trim();
+
 		produit.add(prodname);
 		produit.add(prodQuantity);
 		produit.add(prodPrice);
-		System.out.println(listProduit.toString());
+		System.out.println("ListeProduit : " + listProduit);
 		listProduit.add(produit);
-		session.setAttribute("listProductCart", listProduit);
+		System.out.println("Add produit, ListeProduit : " + listProduit);
+		// session.setAttribute("listProductCart", listProduit);
 		rd.forward(request, response);
-	
+
 	}
-	
-	
-	
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

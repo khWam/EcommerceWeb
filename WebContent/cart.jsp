@@ -110,7 +110,7 @@
 
 
 
-<c:forEach var="product" items="${listProductCart}">
+<c:forEach var="product" items="${sessionScope.listProductCart}">
 	<div class="row" id="cart-row">
 
 			<div class="col-sm-2" id="cart-img">
