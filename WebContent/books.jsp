@@ -10,8 +10,7 @@
 <!-- CSS file -->
 
 <style type="text/css">
-<%@ include file ="css/ecommerceWeb2.css"%>
-</style>
+<%@ include file="css/ecommerceWeb2.css"%></style>
 <!--  <link rel="stylesheet" type="text/css" href="./css/ecommerceWeb.css">   -->
 
 <!--  links and sources for bootstrap and jquery libraries is referenced as a CDN request-->
@@ -49,8 +48,9 @@
 
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" id="logo-mob" href="http://localhost:8080/EcommerceWeb/index.html">Market
-				O Zone</a>
+			<a class="navbar-brand" id="logo-mob"
+				href="http://localhost:8080/EcommerceWeb/index.html">Market O
+				Zone</a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -64,11 +64,12 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav text-center">
-				<li><a href="http://localhost:8080/EcommerceWeb/category.jsp">THE STORE</a></li>
+				<li><a href="http://localhost:8080/EcommerceWeb/category.jsp">THE
+						STORE</a></li>
 				<li><a href="//hype.lemonstand.com/about">ABOUT</a></li>
 				<li><a class="navbar-brand" id="logo"
-					href="http://localhost:8080/EcommerceWeb/index.html">Market
-				O Zone</a></li>
+					href="http://localhost:8080/EcommerceWeb/index.html">Market O
+						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
 					href="//hype.lemonstand.com/cart"><span class="hidden-xs"
@@ -83,50 +84,95 @@
 	</div>
 	<!-- /.container-fluid --> </nav>
 	<div class="wrapper">
+		<div clas="jumbotron">
+			<form class="custom" onsubmit="return false" method="post"
+				action="/product/3-pasta-s">
+				<div class="row" class="product">
+					<div class="product-page content " id="product-page">
+						<div class="col-md-9">
+							<h2>3 Pasta&#039;s</h2>
+							<br>
+							<p>
+							<p>If you like variety, get the 3 pasta special. Currently on
+								sale!</p>
+							</p>
 
-		<div class="row content main-shop">
-			<div class="col-md-12 cat-list">
-				
-			</div>
-			<div class="col-md-12">
-				<div class="row">
+							<!-- <img
+								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_750x750-jpg-crop.png?1414098515"
+								alt="3 Pasta&#039;s"> <img
+								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4b_750x750-jpg-crop.png?1414098515"
+								alt="3 Pasta&#039;s"> <img
+								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4c_750x750-jpg-crop.png?1414098516"
+								alt="3 Pasta&#039;s"> -->
+						</div>
 
-					<div class="col-md-12 shop-item">
-						<a href="BooksControleur"> <img
-							src="http://static.tumblr.com/aa19e9f5d248a6144b11925314b23b3c/wax1zve/C8Lnsa8u0/tumblr_static_3r46ubv006iogcw8gww880oos.jpg"
-							alt="Books">
-							<div class="item-detail">
-								<h2>Books and Newspapers</h2>
+
+						<!-- PRODUCT DETAIL -->
+						<div class="product-detail col-md-3">
+
+							<div class="col-md-12">
+								<small class="previous-price">$13.00</small>
+
+								<h3>$10.00</h3>
+
+								<div class="product-attributes">
+									<table class="table table-bordered">
+										<tr>
+											<th>Types of Pasta</th>
+											<td>Pesto, Basil, Margherita</td>
+										</tr>
+									</table>
+								</div>
+
+
+
+								<div class="product-options">
+									<label class="title" for="option-0">Portion</label><br> <select
+										id="option-0" name="options[3]" class="select-option"
+										data-ajax-handler="shop:product"
+										data-ajax-update="#product-page=shop-product">
+										<option value="options-1-eceaa402-80ca-49a0">1</option>
+										<option value="options-1-52fb6c2d-44bd-4954">2</option>
+										<option value="options-1-e981cf35-f299-4076">3</option>
+									</select>
+								</div>
+								<div class="product-options">
+									<label class="title" for="option-1">Pasta Option</label><br>
+									<select id="option-1" name="options[4]" class="select-option"
+										data-ajax-handler="shop:product"
+										data-ajax-update="#product-page=shop-product">
+										<option value="options-2-2b30ea43-2e92-46f1">Normal</option>
+										<option value="options-2-b3a8e9cf-dc42-4379">Gluten
+											Free</option>
+										<option value="options-2-03eb2c69-d8b1-4046">Wholewheat</option>
+									</select>
+								</div>
+
+
+
+								<input type="hidden" name="productId" value="8" />
+								<div class="add-cart-holder form-group">
+
+									<div class="quantity-selector">
+										<label class="title">Quantity</label> <input
+											class="form-control quantity" type="text" value="1"
+											name="quantity" />
+									</div>
+								</div>
+
+								<a class="btn btn-important btn-add-cart" href="#"
+									data-ajax-handler="shop:onAddToCart"
+									data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
+									to Cart </a><br>
+								<br>
 							</div>
-						</a>
-					</div>
-					<div class="col-md-12 shop-item">
-						<a href="/product/crepe-pie"> <img
-							src="http://i.huffpost.com/gen/1920351/images/o-MUSIC-facebook.jpg"
-							alt="Multimedia">
-							<div class="item-detail">
-								<h2>Multimedia</h2>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-12 shop-item">
-						<a href="/product/penne-salad"> <img
-							src="http://static.fnac-static.com/multimedia/Images/FD/Comete/65607/CCP_IMG_ORIGINAL/801521.jpg"
-							alt="Goodies">
-							<div class="item-detail">
-								<h2>Goodies</h2>
-							</div>
-						</a>
-					</div>
-
-					<div class="pagination-holder"></div>
 
 
+						</div>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-
-		<!-- LETS GET THIS CATEGORIES PAGE TO WORK PLIS? -->
 	</div>
 
 	<div class="main-footer">
