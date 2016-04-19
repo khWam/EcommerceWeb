@@ -50,7 +50,7 @@ public class CartControleur extends HttpServlet {
 
 		ArrayList<String> produit = new ArrayList<>();
 
-		listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCar");
+		listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCart");
 		if (listProduit == null) {
 			listProduit = new ArrayList<>();
 			session.setAttribute("listProductCart", listProduit);
@@ -68,7 +68,7 @@ public class CartControleur extends HttpServlet {
 		System.out.println("ListeProduit : " + listProduit);
 		listProduit.add(produit);
 		System.out.println("Add produit, ListeProduit : " + listProduit);
-		// session.setAttribute("listProductCart", listProduit);
+		session.setAttribute("listProductCart", listProduit);
 		rd.forward(request, response);
 
 	}
