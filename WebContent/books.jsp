@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,8 @@
 <!-- CSS file -->
 
 <style type="text/css">
-<%@ include file="css/ecommerceWeb2.css"%></style>
+<%@ include file="css/ecommerceWeb2.css"%>
+</style>
 <!--  <link rel="stylesheet" type="text/css" href="./css/ecommerceWeb.css">   -->
 
 <!--  links and sources for bootstrap and jquery libraries is referenced as a CDN request-->
@@ -84,49 +86,49 @@
 	</div>
 	<!-- /.container-fluid --> </nav>
 	<div class="wrapper">
-		<div clas="jumbotron">
-			<form class="custom" onsubmit="return false" method="post"
-				action="/product/3-pasta-s">
-				<div class="row" class="product">
-					<div class="product-page content " id="product-page">
-						<div class="col-md-9">
-							<h2>3 Pasta&#039;s</h2>
-							<br>
-							<p>
-							<p>If you like variety, get the 3 pasta special. Currently on
-								sale!</p>
-							</p>
+		<div class="jumbotron">
+			<c:forEach var="product" items="${listProduct}">
+				<form class="custom" onsubmit="return false" method="post"
+					action="/product/3-pasta-s">
+					<div class="row" class="product">
+						<div class="product-page content " id="product-page">
+							<div class="col-md-9">
+								<h2>${product.getName()}</h2>
+								<br>
+								<p>
+								<p>${product.getDescription()}</p>
+								</p>
 
-							<!-- <img
+								<!-- <img
 								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_750x750-jpg-crop.png?1414098515"
 								alt="3 Pasta&#039;s"> <img
 								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4b_750x750-jpg-crop.png?1414098515"
 								alt="3 Pasta&#039;s"> <img
 								src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4c_750x750-jpg-crop.png?1414098516"
 								alt="3 Pasta&#039;s"> -->
-						</div>
+							</div>
 
 
-						<!-- PRODUCT DETAIL -->
-						<div class="product-detail col-md-3">
+							<!-- PRODUCT DETAIL -->
+							<div class="product-detail col-md-3">
 
-							<div class="col-md-12">
-								<small class="previous-price">$13.00</small>
+								<div class="col-md-12">
+									<!-- 	<small class="previous-price">$13.00</small> -->
 
-								<h3>$10.00</h3>
+									<h3>$${product.getPrice()}</h3>
 
-								<div class="product-attributes">
-									<table class="table table-bordered">
-										<tr>
-											<th>Types of Pasta</th>
-											<td>Pesto, Basil, Margherita</td>
-										</tr>
-									</table>
-								</div>
+									<div class="product-attributes">
+										<table class="table table-bordered">
+											<tr>
+												<th>Stock</th>
+												<td>${product.getQuantity()}</td>
+											</tr>
+										</table>
+									</div>
 
 
 
-								<div class="product-options">
+									<!-- 	<div class="product-options">
 									<label class="title" for="option-0">Portion</label><br> <select
 										id="option-0" name="options[3]" class="select-option"
 										data-ajax-handler="shop:product"
@@ -147,31 +149,31 @@
 										<option value="options-2-03eb2c69-d8b1-4046">Wholewheat</option>
 									</select>
 								</div>
+ -->
 
 
+									<input type="hidden" name="productId" value="8" />
+									<div class="add-cart-holder form-group">
 
-								<input type="hidden" name="productId" value="8" />
-								<div class="add-cart-holder form-group">
-
-									<div class="quantity-selector">
-										<label class="title">Quantity</label> <input
-											class="form-control quantity" type="text" value="1"
-											name="quantity" />
+										<div class="quantity-selector">
+											<label class="title">Quantity</label> <input
+												class="form-control quantity" type="text" value="1"
+												name="quantity" />
+										</div>
 									</div>
+
+									<a class="btn btn-important btn-add-cart" href="#"
+										data-ajax-handler="shop:onAddToCart"
+										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
+										to Cart </a><br> <br>
 								</div>
 
-								<a class="btn btn-important btn-add-cart" href="#"
-									data-ajax-handler="shop:onAddToCart"
-									data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
-									to Cart </a><br>
-								<br>
+
 							</div>
-
-
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</c:forEach>
 		</div>
 	</div>
 
