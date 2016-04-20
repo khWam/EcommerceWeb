@@ -10,6 +10,27 @@ body {
     left: 0;
 }
 
+#Logo-mob, #logo{
+    font-family: 'Brush Script MT', cursive;
+    font-size: 5vw;
+
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 2vh;
+   
+    
+    }
+ #intro-image{
+    font-family: 'Brush Script MT', cursive;
+    font-size: 10vw;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 3vh;
+    text-align: center;
+    color: white;
+    }
 #loading-indicator span {
     display: block;
     width: 10em;
@@ -31,7 +52,7 @@ body {
           background: #ffffff;
         }
         #intro-image, #login-page, #about-bg{
-            background: url(../img/Books.jpg)no-repeat top center;
+            background: url(./img/Books.jpg)no-repeat top center;
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
