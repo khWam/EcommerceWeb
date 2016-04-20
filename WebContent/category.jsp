@@ -76,7 +76,7 @@
 				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
-					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
+					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

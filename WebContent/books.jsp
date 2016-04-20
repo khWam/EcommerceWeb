@@ -41,7 +41,7 @@
 	href="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/themes/hype/resources/css/custom.css?1426718990">
 
 
-<title>Shop</title>
+<title>Category - Books</title>
 </head>
 <body>
 
@@ -79,7 +79,7 @@
 				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
-					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
+					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

@@ -79,7 +79,7 @@
 				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
-					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
+					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -151,7 +151,7 @@
         <input type="text" class="form-control" id="coupon-code" name="coupon" placeholder="Coupon Code" value="" />
     </div>
     <a class="btn btn-default col-xs-12 btn-lg solid" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
-        <a class="col-xs-12 btn btn-important solid btn-lg" href="//hype.lemonstand.com/checkout-start">Checkout</a>
+        <a class="col-xs-12 btn btn-important solid btn-lg" href="http://localhost:8080/EcommerceWeb/checkout.jsp">Checkout</a>
     </div>
 
 </div></div>
