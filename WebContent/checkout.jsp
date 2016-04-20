@@ -110,7 +110,7 @@
 
 <div id="address-form" class="row" >
 
-<form  class="custom" data-validation-message="" method="post" action="/checkout">
+<form  class="custom" data-validation-message="" method="POST" action="CheckoutControleur">
   <div class="col-md-12" style="padding-bottom: 0;">
     <div class="col-md-12 col-sm-12 col-lg-6">
 
@@ -167,10 +167,12 @@
     </div>
   
     <div class="col-sm-12">
-                  <a href="#top" class="btn btn-important pull-right data-ajax-url" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-totals=shop-checkout-totals, #checkout-page=shop-checkout" data-hash="step-2">Validate</a>
-                      <input type="hidden" name="step" value="billing_info,shipping_info">
+<!--                   <a href="#top" class="btn btn-important pull-right data-ajax-url" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-totals=shop-checkout-totals, #checkout-page=shop-checkout" data-hash="step-2">Validate</a>
+ -->                  <input type= "submit" class="btn btn-important pull-right"  name="Submit" value= "Validate"/>
+                    
+                    <!--   <input type="hidden" name="step" value="billing_info,shipping_info">
       <input type="hidden" name="nextStep" value="shipping_method"/>
-    
+     -->
         </div>
   </div>
   </form>
@@ -197,13 +199,9 @@
 <div class="checkout-tab" id="shop-ship">
   <div class="checkout-tab-bar row">
     <div class="col-md-6 columns">
-      <p>
-                  <i class="fa fa-circle-thin"></i> 
-          Step 2: Shipping Method
-              </p>
+     
     </div>
     <div class="col-md-6 columns text-right">
-              <span class="status">Fill out Billing Info</span>
           </div>
   </div>
 
