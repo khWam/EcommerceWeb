@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import fr.demos.data.ProductLivreDAO;
 import fr.demos.metier.CatalogProduct;
 import fr.demos.metier.Category;
 import fr.demos.metier.Customer;
@@ -20,177 +21,184 @@ public class Main {
 
 		Livre l4= new Livre("la chute kkkkk", "top livre", 10, papier,10, "123-99", "Folett",
 				"hachett", "policier"); 
+		try {
+			ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
+			dao.saveToDB(l1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 
-		Customer c1 =new Customer("email", "Henri", "adress", 92100, "060000", "Paris");
-		
-		
-		ArrayList<Object> list1 = new ArrayList<Object>();
-		list1 =c1.saveUser();
-		System.out.println(list1);
-		
-		CatalogProduct  cat= new CatalogProduct();
-		System.out.println(cat.getProductList());
-		
-//		try {
-//			c1.addProduct(l1);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		try {
-//			c1.addProduct(l4);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//
-//
-//		System.out.println();
-//
-//		try {
-//			c1.addProduct(l4);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//
-//		System.out.println(c1.getCustomerorder().productCardinale(l4));//		System.out.println();
-//		
-//		try {
-//			c1.addProduct(l3);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		
-//		System.out.println("partie remove:");
-//		try {
-//			c1.removeProduct(l3);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		try {
-//			c1.removeProduct(l3);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		try {
-//			c1.removeProduct(l4);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		try {
-//			c1.removeProduct(l4);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		try {
-//			c1.removeProduct(l4);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(c1.toString());
-//		System.out.println(c1.getCustomerorder());
-//		//		
-//		//		//cration du panier
-//		//		CustomerOrder panier = new CustomerOrder();
-//		//		System.out.println(panier.toString());
-//		//		//cration du panier
-//		//		
-//		//
-//		//		System.out.println();
-//		//		try {
-//		//			panier.addProduct(l1);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		
-//		//		
-//		//		System.out.println();
-//		//		try {
-//		//			panier.addProduct(l3);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		
-//		//		System.out.println();
-//		//		
-//		//		try {
-//		//			panier.addProduct(l4);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		
-//		//		try {
-//		//			panier.addProduct(l3);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		
-//		//		
-//		//		System.out.println(panier.productCardinale(l3));
-//		//		
-//		//		try {
-//		//			panier.removeProduct(l4);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		
-//		//		try {
-//		//			panier.removeProduct(l4);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		try {
-//		//			panier.removeProduct(l3);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//		//		
-//		//		try {
-//		//			panier.removeProduct(l4);
-//		//		} catch (Exception e) {
-//		//			// TODO Auto-generated catch block
-//		//			e.printStackTrace();
-//		//		}
-//		//		System.out.println(panier.toString());
-//
-//
-//
+		//		Customer c1 =new Customer("email", "Henri", "adress", 92100, "060000", "Paris");
+		//		
+		//		
+		//		ArrayList<Object> list1 = new ArrayList<Object>();
+		//		list1 =c1.saveUser();
+		//		System.out.println(list1);
+		//		
+		//		CatalogProduct  cat= new CatalogProduct();
+		//		System.out.println(cat.getProductList());
+
+		//		try {
+		//			c1.addProduct(l1);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//
+		//		try {
+		//			c1.addProduct(l4);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//
+		//
+		//		System.out.println();
+		//
+		//		try {
+		//			c1.addProduct(l4);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//
+		//		System.out.println(c1.getCustomerorder().productCardinale(l4));//		System.out.println();
+		//		
+		//		try {
+		//			c1.addProduct(l3);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		
+		//		System.out.println("partie remove:");
+		//		try {
+		//			c1.removeProduct(l3);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		try {
+		//			c1.removeProduct(l3);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		try {
+		//			c1.removeProduct(l4);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		try {
+		//			c1.removeProduct(l4);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		try {
+		//			c1.removeProduct(l4);
+		//		} catch (Exception e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		//		System.out.println(c1.toString());
+		//		System.out.println(c1.getCustomerorder());
+		//		//		
+		//		//		//cration du panier
+		//		//		CustomerOrder panier = new CustomerOrder();
+		//		//		System.out.println(panier.toString());
+		//		//		//cration du panier
+		//		//		
+		//		//
+		//		//		System.out.println();
+		//		//		try {
+		//		//			panier.addProduct(l1);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		
+		//		//		
+		//		//		System.out.println();
+		//		//		try {
+		//		//			panier.addProduct(l3);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		
+		//		//		System.out.println();
+		//		//		
+		//		//		try {
+		//		//			panier.addProduct(l4);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		
+		//		//		try {
+		//		//			panier.addProduct(l3);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		
+		//		//		
+		//		//		System.out.println(panier.productCardinale(l3));
+		//		//		
+		//		//		try {
+		//		//			panier.removeProduct(l4);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		
+		//		//		try {
+		//		//			panier.removeProduct(l4);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		try {
+		//		//			panier.removeProduct(l3);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//		//		
+		//		//		try {
+		//		//			panier.removeProduct(l4);
+		//		//		} catch (Exception e) {
+		//		//			// TODO Auto-generated catch block
+		//		//			e.printStackTrace();
+		//		//		}
+		//		//		System.out.println(panier.toString());
+		//
+		//
+		//
 	}
-//
+	//
 }
