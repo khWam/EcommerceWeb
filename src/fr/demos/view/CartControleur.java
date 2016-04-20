@@ -2,6 +2,7 @@ package fr.demos.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,23 +44,38 @@ public class CartControleur extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
 
-		Cart listProduit ;
-		if (session.isNew()) {
-			System.out.println("Session nouvelle");
-			listProduit = new Cart() ;
-			session.setAttribute("listProductCart", listProduit);
-		}
-		listProduit = (Cart) session.getAttribute("listProductCart");
+
+		Cart cart = new Cart();
+		HashMap<String, Product> listProduit;
+		HashMap<String, Product> listCatalog=(HashMap<String, Product>)session.getAttribute("listProduct");
+//		if (session.isNew()) {
+//			System.out.println("Session nouvelle");
+//			listProduit = new Cart() ;
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+		
+		listProduit = (HashMap<String, Product>) session.getAttribute("listProductCart");
 		
 		if (listProduit == null) {
-			listProduit = new Cart();
+			cart = new Cart();
+			listProduit= new HashMap<String, Product>();
+			listProduit = cart.getCartItems();
 			System.out.println("creation nouveau cart! : " + listProduit);
 			session.setAttribute("listProductCart", listProduit);
 		}
-		String produit= request.getParameter("product");
-		System.out.println("Produit recuperer! "+ produit);
+		
+		
+		
+		String produitName= request.getParameter("productNameKey");
+		Product prod = listCatalog.get(produitName);
+		System.out.println("Produit recuperé : " + prod);
 
+		cart.setCartItems(listProduit);
+		cart.addToCart(prod);
+		listProduit = cart.getCartItems();
+		System.out.println("List produit dans le cart : " + listProduit);
 		//listProduit.addToCart(produit);
 		session.setAttribute("listProductCart", listProduit);
 		rd.forward(request, response);

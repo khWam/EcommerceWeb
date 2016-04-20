@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Cart {
 
-	private HashMap<String, Product> cartItems;
+	private static HashMap<String, Product> cartItems;
 	public Cart() {
 		cartItems= new HashMap<String, Product>();
 	}

@@ -74,9 +74,9 @@
 						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
-					href="//hype.lemonstand.com/cart"><span class="hidden-xs"
-						id="navbar-totals">0 ITEMS</span></a></li>
-				<li id="mobile-cart"><a href="//hype.lemonstand.com/cart">CART</a>
+					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
+						id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>
+				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
 					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
