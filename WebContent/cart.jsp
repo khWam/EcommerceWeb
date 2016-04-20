@@ -74,12 +74,12 @@
 						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
-					href="//hype.lemonstand.com/cart"><span class="hidden-xs"
-						id="navbar-totals">0 ITEMS</span></a></li>
-				<li id="mobile-cart"><a href="//hype.lemonstand.com/cart">CART</a>
+					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
+						id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>
+				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
-					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
+					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -118,14 +118,14 @@
 			</div>
 		<div class="row" id="align-middle">
 			<div class="col-sm-4">
-				<a href="/product/3-pasta-s">${product.get(0)}</a>
+				<a href="/product/3-pasta-s">${product.key}</a>
         			</div>
 			<div class="col-sm-2">
-									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.get(1)}">
+									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.value.getQuantity()}">
 							</div>
 			<div class="col-sm-3 col-xs-12" id="item-middle">
 				<p>
-					<span class="pull-left">$${product.get(2)}</span>
+					<span class="pull-left">$${product.value.getPrice()}</span>
 											<a class="col-sm-3" id="item-close" href="#close" 
 						data-ajax-handler="shop:cart" 
 												data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
@@ -151,7 +151,7 @@
         <input type="text" class="form-control" id="coupon-code" name="coupon" placeholder="Coupon Code" value="" />
     </div>
     <a class="btn btn-default col-xs-12 btn-lg solid" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
-        <a class="col-xs-12 btn btn-important solid btn-lg" href="//hype.lemonstand.com/checkout-start">Checkout</a>
+        <a class="col-xs-12 btn btn-important solid btn-lg" href="http://localhost:8080/EcommerceWeb/checkout.jsp">Checkout</a>
     </div>
 
 </div></div>
