@@ -118,14 +118,14 @@
 			</div>
 		<div class="row" id="align-middle">
 			<div class="col-sm-4">
-				<a href="/product/3-pasta-s">${product.get(0)}</a>
+				<a href="/product/3-pasta-s">${product.key}</a>
         			</div>
 			<div class="col-sm-2">
-									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.get(1)}">
+									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.value.getQuantity()}">
 							</div>
 			<div class="col-sm-3 col-xs-12" id="item-middle">
 				<p>
-					<span class="pull-left">$${product.get(2)}</span>
+					<span class="pull-left">$${product.value.getPrice()}</span>
 											<a class="col-sm-3" id="item-close" href="#close" 
 						data-ajax-handler="shop:cart" 
 												data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.demos.metier.Cart;
+import fr.demos.metier.Livre;
 import fr.demos.metier.Product;
 
 /**
@@ -41,35 +43,55 @@ public class CartControleur extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		ArrayList<ArrayList<String>> listProduit;
+
+		Cart listProduit ;
 		if (session.isNew()) {
 			System.out.println("Session nouvelle");
-			listProduit = new ArrayList<>();
+			listProduit = new Cart() ;
 			session.setAttribute("listProductCart", listProduit);
 		}
-
-		ArrayList<String> produit = new ArrayList<>();
-
-		listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCart");
+		listProduit = (Cart) session.getAttribute("listProductCart");
+		
 		if (listProduit == null) {
-			listProduit = new ArrayList<>();
+			listProduit = new Cart();
+			System.out.println("creation nouveau cart! : " + listProduit);
 			session.setAttribute("listProductCart", listProduit);
 		}
-		String prodname = request.getParameter("prodName");
-		prodname = prodname.trim();
-		String prodQuantity = request.getParameter("prodQuantity");
-		prodQuantity = prodQuantity.trim();
-		String prodPrice = request.getParameter("prodPrice");
-		prodPrice = prodPrice.trim();
+		String produit= request.getParameter("product");
+		System.out.println("Produit recuperer! "+ produit);
 
-		produit.add(prodname);
-		produit.add(prodQuantity);
-		produit.add(prodPrice);
-		System.out.println("ListeProduit : " + listProduit);
-		listProduit.add(produit);
-		System.out.println("Add produit, ListeProduit : " + listProduit);
+		//listProduit.addToCart(produit);
 		session.setAttribute("listProductCart", listProduit);
 		rd.forward(request, response);
+//		ArrayList<ArrayList<String>> listProduit;
+//		if (session.isNew()) {
+//			System.out.println("Session nouvelle");
+//			listProduit = new ArrayList<>();
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+//
+//		ArrayList<String> produit = new ArrayList<>();
+
+		//listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCart");
+//		if (listProduit == null) {
+//			listProduit = new ArrayList<>();
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+//		String prodname = request.getParameter("prodName");
+//		prodname = prodname.trim();
+//		String prodQuantity = request.getParameter("prodQuantity");
+//		prodQuantity = prodQuantity.trim();
+//		String prodPrice = request.getParameter("prodPrice");
+//		prodPrice = prodPrice.trim();
+//
+//		produit.add(prodname);
+//		produit.add(prodQuantity);
+//		produit.add(prodPrice);
+//		System.out.println("ListeProduit : " + listProduit);
+//		listProduit.add(produit);
+//		System.out.println("Add produit, ListeProduit : " + listProduit);
+//		session.setAttribute("listProductCart", listProduit);
+//		rd.forward(request, response);
 
 	}
 
