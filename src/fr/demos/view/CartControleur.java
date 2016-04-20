@@ -2,6 +2,7 @@ package fr.demos.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.demos.metier.Cart;
+import fr.demos.metier.Livre;
 import fr.demos.metier.Product;
 
 /**
@@ -41,35 +44,70 @@ public class CartControleur extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/cart.jsp");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		ArrayList<ArrayList<String>> listProduit;
-		if (session.isNew()) {
-			System.out.println("Session nouvelle");
-			listProduit = new ArrayList<>();
-			session.setAttribute("listProductCart", listProduit);
-		}
+		
 
-		ArrayList<String> produit = new ArrayList<>();
 
-		listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCart");
+		Cart cart = new Cart();
+		HashMap<String, Product> listProduit;
+		HashMap<String, Product> listCatalog=(HashMap<String, Product>)session.getAttribute("listProduct");
+//		if (session.isNew()) {
+//			System.out.println("Session nouvelle");
+//			listProduit = new Cart() ;
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+		
+		listProduit = (HashMap<String, Product>) session.getAttribute("listProductCart");
+		
 		if (listProduit == null) {
-			listProduit = new ArrayList<>();
+			cart = new Cart();
+			listProduit= new HashMap<String, Product>();
+			listProduit = cart.getCartItems();
+			System.out.println("creation nouveau cart! : " + listProduit);
 			session.setAttribute("listProductCart", listProduit);
 		}
-		String prodname = request.getParameter("prodName");
-		prodname = prodname.trim();
-		String prodQuantity = request.getParameter("prodQuantity");
-		prodQuantity = prodQuantity.trim();
-		String prodPrice = request.getParameter("prodPrice");
-		prodPrice = prodPrice.trim();
+		
+		
+		
+		String produitName= request.getParameter("productNameKey");
+		Product prod = listCatalog.get(produitName);
+		System.out.println("Produit recuperé : " + prod);
 
-		produit.add(prodname);
-		produit.add(prodQuantity);
-		produit.add(prodPrice);
-		System.out.println("ListeProduit : " + listProduit);
-		listProduit.add(produit);
-		System.out.println("Add produit, ListeProduit : " + listProduit);
+		cart.setCartItems(listProduit);
+		cart.addToCart(prod);
+		listProduit = cart.getCartItems();
+		System.out.println("List produit dans le cart : " + listProduit);
+		//listProduit.addToCart(produit);
 		session.setAttribute("listProductCart", listProduit);
 		rd.forward(request, response);
+//		ArrayList<ArrayList<String>> listProduit;
+//		if (session.isNew()) {
+//			System.out.println("Session nouvelle");
+//			listProduit = new ArrayList<>();
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+//
+//		ArrayList<String> produit = new ArrayList<>();
+
+		//listProduit = (ArrayList<ArrayList<String>>) session.getAttribute("listeProductCart");
+//		if (listProduit == null) {
+//			listProduit = new ArrayList<>();
+//			session.setAttribute("listProductCart", listProduit);
+//		}
+//		String prodname = request.getParameter("prodName");
+//		prodname = prodname.trim();
+//		String prodQuantity = request.getParameter("prodQuantity");
+//		prodQuantity = prodQuantity.trim();
+//		String prodPrice = request.getParameter("prodPrice");
+//		prodPrice = prodPrice.trim();
+//
+//		produit.add(prodname);
+//		produit.add(prodQuantity);
+//		produit.add(prodPrice);
+//		System.out.println("ListeProduit : " + listProduit);
+//		listProduit.add(produit);
+//		System.out.println("Add produit, ListeProduit : " + listProduit);
+//		session.setAttribute("listProductCart", listProduit);
+//		rd.forward(request, response);
 
 	}
 

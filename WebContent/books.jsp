@@ -41,7 +41,7 @@
 	href="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/themes/hype/resources/css/custom.css?1426718990">
 
 
-<title>Shop</title>
+<title>Category - Books</title>
 </head>
 <body>
 
@@ -74,12 +74,12 @@
 						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
-					href="//hype.lemonstand.com/cart"><span class="hidden-xs"
-						id="navbar-totals">0 ITEMS</span></a></li>
-				<li id="mobile-cart"><a href="//hype.lemonstand.com/cart">CART</a>
+					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
+						id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>
+				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
 				</li>
 				<li id="mobile-cart"><a
-					href="//hype.lemonstand.com/checkout-start">CHECKOUT</a></li>
+					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -93,10 +93,10 @@
 					<div class="row" class="product">
 						<div class="product-page content " id="product-page">
 							<div class="col-md-9">
-								<h2>${product.getName()}</h2>
+								<h2>${product.key}</h2>
 								<br>
 								<p>
-								<p>${product.getDescription()}</p>
+								<p>${product.value.description}</p>
 								</p>
 
 								<!-- <img
@@ -115,13 +115,13 @@
 								<div class="col-md-12">
 									<!-- 	<small class="previous-price">$13.00</small> -->
 
-									<h3>$${product.getPrice()}</h3>
+									<h3>$${product.value.getPrice()}</h3>
 
 									<div class="product-attributes">
 										<table class="table table-bordered">
 											<tr>
 												<th>Stock</th>
-												<td>${product.getQuantity()}</td>
+												<td>${product.value.getQuantity()}</td>
 											</tr>
 										</table>
 									</div>
@@ -162,7 +162,9 @@
 										</div>
 									</div>
 
-									<a class="btn btn-important btn-add-cart" href="CartControleur?prodName=${product.getName()}&prodQuantity=${product.getQuantity()}&prodPrice=${product.getPrice()}"
+									<a class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}"
+<%-- 									<a class="btn btn-important btn-add-cart" href="CartControleur?prodName=${product.getName()}&prodQuantity=${product.getQuantity()}&prodPrice=${product.getPrice()}"
+ --%>										
 										data-ajax-handler="shop:onAddToCart"
 										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
 										to Cart </a><br> <br>

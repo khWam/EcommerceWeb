@@ -37,11 +37,21 @@ public class Livre extends Product {
 
 	
 	
-	public String getTitle() {
+	public Livre(int id, String name, String description, int price, Timestamp last_update, int quantity,
+			Category category, String isbn, String author,
+			String edition, String genre) {
+		super(id, name, description, price, last_update, quantity, category);
+		this.isbn=isbn;
+		this.author=author;
+		this.edition=edition;
+		this.genre=genre;	}	
+	
+	
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setTitle(String isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 

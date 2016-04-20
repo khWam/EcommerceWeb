@@ -11,26 +11,36 @@ public class Category {
 		this.name = name;
 		//this.id = id;
 	}
+
+	public Category(int id){
+		// based on the DB configuration
+		super();
+		this.id=id;
+		if(id==1){this.name="books";}
+		else if (id==2){this.name="multimedia";}
+		else if (id==3){this.name="goodies";}
+	}
+
 	public String getName() {
-	 	 return name; 
+		return name; 
 	}
 	/**
 	 * Setter of name
 	 */
 	public void setName(String name) { 
-		 this.name = name; 
+		this.name = name; 
 	}
 	/**
 	 * Getter of id
 	 */
 	public int getId() {
-	 	 return id; 
+		return id; 
 	}
 	/**
 	 * Setter of id
 	 */
-//	public void setId(int id) { 
-//		 this.id = id; 
-//	} 
+	//	public void setId(int id) { 
+	//		 this.id = id; 
+	//	} 
 
 }
