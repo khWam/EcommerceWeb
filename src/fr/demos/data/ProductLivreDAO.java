@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import fr.demos.metier.Category;
 import fr.demos.metier.Livre;
+import fr.demos.metier.MessageException;
 import fr.demos.metier.Product;
 
 public class ProductLivreDAO implements ElementDAO {
@@ -43,7 +44,7 @@ public class ProductLivreDAO implements ElementDAO {
 		// On demande une connexion au pool
 		Connection cx = this.ds.getConnection();
 		//On va pouvoir preparer notre requette SQL
-		PreparedStatement psmt = cx.prepareStatement("insert into product values (?,?,?,?,?,?,?)");
+		PreparedStatement psmt = cx.prepareStatement("insert into product values (?,?,?,?,?,?,?,?,?,?)");
 
 		psmt.setString(2, prod.getName());
 		psmt.setString(3, prod.getDescription());
@@ -63,7 +64,7 @@ public class ProductLivreDAO implements ElementDAO {
 
 	@Override
 	public void deleteFromDB(String identifier) throws Exception {
-		
+
 		// On demande une connexion au pool
 		Connection cx = this.ds.getConnection();
 		//On va pouvoir preparer notre requette SQL
@@ -102,8 +103,8 @@ public class ProductLivreDAO implements ElementDAO {
 
 		}
 		return mapProduct; 
-		
-		
+
+
 	}
 
 	@Override
@@ -112,9 +113,11 @@ public class ProductLivreDAO implements ElementDAO {
 		// On demande une connexion au pool
 		Connection cx = this.ds.getConnection();
 		//On va pouvoir preparer notre requette SQL
-		PreparedStatement psmt = cx.prepareStatement("select from product where name= ?");
-		ResultSet rs = psmt.executeQuery(identifier);
-	
+		PreparedStatement psmt = cx.prepareStatement("select product_id, name, descreption,price, last_update,"
+				+ "quantity,category_id, isbn,author,genre,edition from product where name= ?");
+		psmt.setString(1, identifier);
+		ResultSet rs = psmt.executeQuery();
+
 		int product_id = rs.getInt(1);
 		String product_name = rs.getString(2);		
 		String product_discreption =rs.getString(3);
@@ -132,7 +135,7 @@ public class ProductLivreDAO implements ElementDAO {
 		Object obj = (Object) prod;
 		HashMap<String, Object> mapProduct = new HashMap<>();
 		mapProduct.put(prod.getName(), obj);	
-		
+
 		return mapProduct;
 	}
 
@@ -141,5 +144,26 @@ public class ProductLivreDAO implements ElementDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
+	public void decrementFromDB(String identifier, int quantiteAcheter) throws Exception {
+		HashMap<String, Object> product;
+		product =this.getDBElement(identifier);
+		Livre livre = (Livre) product.get(identifier);
+		if (livre.getQuantity()>quantiteAcheter){
+			// On demande une connexion au pool
+			Connection cx = this.ds.getConnection();
+			//On va pouvoir preparer notre requette SQL
+			PreparedStatement psmt = cx.prepareStatement("update product set quantity=? where name= ?");
+			psmt.setString(1, identifier);
+			int newQuantity = livre.getQuantity()-quantiteAcheter;
+			psmt.setInt(2, newQuantity);
+			psmt.executeUpdate();
+
+			//on rend la connexion
+			cx.close();}
+		else { throw new MessageException("la quantite demande pour le produit: "+identifier+" est supérieur au stock disponible");}
+	}
+
 
 }

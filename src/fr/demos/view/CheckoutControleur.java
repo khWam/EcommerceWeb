@@ -13,9 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.demos.data.CustomerDAO;
+import fr.demos.data.CustomerOrderDAO;
+import fr.demos.data.ProductLivreDAO;
 import fr.demos.metier.Cart;
 import fr.demos.metier.Customer;
 import fr.demos.metier.CustomerOrder;
+import fr.demos.metier.Livre;
+import fr.demos.metier.MessageException;
 import fr.demos.metier.Product;
 
 /**
@@ -79,10 +84,14 @@ public class CheckoutControleur extends HttpServlet {
 			String city = request.getParameter("billingInfo[city]");
 			String codePostal = request.getParameter("billingInfo[postalCode]");
 
+			int quantiteAcheteInt =(Integer) session.getAttribute("quantiteAcheter");
+
+
 
 			//System.out.println(nom +" "+ email+" "+phone);	
 
 			int codePostalInt =0;
+			//int quantiteAcheteInt =0;
 
 			try{
 				codePostal=codePostal.trim();
@@ -91,6 +100,8 @@ public class CheckoutControleur extends HttpServlet {
 				errors =true;
 				request.setAttribute("codePostalErreurs", "nombre incorrecte");
 			}
+
+
 
 			if(!errors){
 
@@ -102,22 +113,51 @@ public class CheckoutControleur extends HttpServlet {
 				CustomerOrder clientOrder= new CustomerOrder(amount, ArrayListProduit);
 
 				Customer client= new Customer(email, nom, adress, codePostalInt, phone, city, clientOrder);
-				//ClimatisationDAO dao = new FileClimatisationDAO("climatisationFile");
 
-				//				try {
-				//					ClimatisationDAO dao;
-				//					dao = new SQLClimatisationDAO("jdbc/appliclim");
-				//					dao.sauve(clim);
-				//					rd=request.getRequestDispatcher("/successClimatisation.jsp");
-				//				} catch (Exception e1) {
-				//					// TODO Auto-generated catch block
-				//					request.setAttribute("sauveErreur", e1.getMessage());
-				//					rd=request.getRequestDispatcher("/saisieClimatisation.jsp");
-				//				}
+//				try {
+//					ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
+//					for (Product p:ArrayListProduit){
+//						Livre l = (Livre) p;
+//
+//						dao.decrementFromDB(l.getName(), quantiteAcheteInt);
+//					}
+//
+//				}catch (MessageException e){ 
+//					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
+//					e.printStackTrace();
+//				}catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
+//					e.printStackTrace();
+//
+//				}
+
+//				try {
+//					CustomerDAO dao= new CustomerDAO("jdbc/ecommerceweb");
+//					dao.saveToDB(client);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					request.setAttribute("customerAddErreur", e.getMessage());
+//					e.printStackTrace();
+//
+//				}
+
+				try {
+					CustomerOrderDAO dao= new CustomerOrderDAO("jdbc/ecommerceweb");
+					dao.saveToDB(clientOrder);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("customerAddErreur", e.getMessage());
+					e.printStackTrace();
+
+				}
+
+
 				System.out.println("la commande est:"+ clientOrder);
 
 				System.out.println("le client est:"+ client);
-
+				
+				session.invalidate();
 			} 
 
 

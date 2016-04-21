@@ -88,7 +88,7 @@
 	<div class="wrapper">
 		<div class="jumbotron">
 			<c:forEach var="product" items="${listProduct}">
-				<form class="custom" onsubmit="return false" method="post"
+				<form class="custom" action="CartControleur" method="post"
 					action="/product/3-pasta-s">
 					<div class="row" class="product">
 						<div class="product-page content " id="product-page">
@@ -158,18 +158,16 @@
 										<div class="quantity-selector">
 											<label class="title">Quantity</label> <input
 												class="form-control quantity" type="text" value="1"
-												name="quantite" id ="quantit" />
+												name="quantitAcheter" id ="quantit" />
 										</div>
 									</div>
-
-<%-- 									<a id="quantiteAjour" class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}&quantitAcheter=${document.getElementById('quantit').value}"								d	
+                                     
+                                     <input type="hidden" name="productNameKey" value="${product.key}" />
+                                    <input type="submit" class="btn btn-important btn-add-cart" name="Submit" value="Add to Cart"><br><br>
+									<%-- <a id="quantiteAjour" class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}&quantitAcheter=${document.getElementById('quantit').value}"								d	
 										data-ajax-handler="shop:onAddToCart"
 										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
 										to Cart </a><br> <br> --%>
-									<a id="quantiteAjour" class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}&quantitAcheter=${document.getElementById('quantit').value}"								d	
-										data-ajax-handler="shop:onAddToCart"
-										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
-										to Cart </a><br> <br>
 								</div>
 
 

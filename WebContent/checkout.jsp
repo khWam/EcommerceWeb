@@ -192,7 +192,7 @@
   </div>
 <c:set var="TotalPrice" value="0" scope="page" />
 <c:forEach var="product" items="${sessionScope.listProductCart}">
-<c:set var="TotalPrice" value="${TotalPrice + (product.value.quantity * product.value.price)}" scope="page"/>
+<c:set var="TotalPrice" value="${TotalPrice + (quantiteAcheter * product.value.price)}" scope="page"/>
  <!-- SHIPPING METHOD -->
 
 
@@ -229,8 +229,8 @@
 				<a href="/product/3-pasta-s">${product.key}</a><br>
 				                    <p class="h6">${product.value.description}</p>
                  
-        <p class="small">Quantity: <span class="pull-right">${product.value.getQuantity()} x ${product.value.getPrice()}</span></p>
-        <p class="small">Total: <span class="pull-right">${product.value.getQuantity()*product.value.getPrice()}</span></p>
+        <p class="small">Quantity: <span class="pull-right">${quantiteAcheter} x ${product.value.getPrice()}</span></p>
+        <p class="small">Total: <span class="pull-right">${quantiteAcheter*product.value.getPrice()}</span></p>
 			</div>
 		</div>
 </c:forEach>

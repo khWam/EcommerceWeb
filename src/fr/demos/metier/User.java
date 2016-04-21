@@ -17,6 +17,15 @@ public abstract class User {
 		this.email = email;
 		this.name = name;
 	}
+	
+
+	public User(int id, String email, String name) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.name = name;
+	}
+
 
 	/*-----------------------------------------------------------------------------
 	 * 2- les methodes

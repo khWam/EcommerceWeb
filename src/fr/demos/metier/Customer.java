@@ -45,6 +45,15 @@ public class Customer extends User {
 
 
 
+	public Customer(int id, String email, String name, String adress, int codePostal, String phone, String city) {
+		super(id, email, name);
+		this.adress = adress;
+		this.codePostal = codePostal;
+		this.phone = phone;
+		this.city = city;	
+		}
+
+
 	@Override
 	public ArrayList<Object> saveUser() {
 		ArrayList<Object> listCustomerAtrib = new ArrayList<Object>();
