@@ -109,7 +109,7 @@
 	</div>
 
 
-
+<c:set var="TotalPrice" value="0" scope="page" />
 <c:forEach var="product" items="${sessionScope.listProductCart}">
 	<div class="row" id="cart-row">
 
@@ -121,7 +121,7 @@
 				<a href="/product/3-pasta-s">${product.key}</a>
         			</div>
 			<div class="col-sm-2">
-									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${product.value.getQuantity()}">
+									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${quantiteAcheter}">
 							</div>
 			<div class="col-sm-3 col-xs-12" id="item-middle">
 				<p>
@@ -136,7 +136,9 @@
 			</div>
 		</div>
 	</div>
-	</c:forEach>
+	
+<c:set var="TotalPrice" value="${TotalPrice + (quantiteAcheter * product.value.price)}" scope="page"/>
+</c:forEach>
 
     </div>
 
@@ -145,7 +147,7 @@
 <div class="col-md-3 row">
     <p>Order Summary</p>
     <ul class="price-list list-group">
-                        <li class="list-group-item important">Total: $20.00</li>
+                        <li class="list-group-item important">Total: $${TotalPrice}</li>
     </ul>
     <div class="col-xs-12 form-group" id="coupon">
         <input type="text" class="form-control" id="coupon-code" name="coupon" placeholder="Coupon Code" value="" />

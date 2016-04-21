@@ -22,7 +22,8 @@ public class Main {
 		Livre l4= new Livre("la chute kkkkk", "top livre", 10, papier,10, "123-99", "Folett",
 				"hachett", "policier"); 
 		try {
-			ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
+			ProductLivreDAO dao;
+			dao=new ProductLivreDAO("jdbc/ecommerceweb");
 			dao.saveToDB(l1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

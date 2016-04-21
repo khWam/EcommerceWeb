@@ -158,13 +158,15 @@
 										<div class="quantity-selector">
 											<label class="title">Quantity</label> <input
 												class="form-control quantity" type="text" value="1"
-												name="quantity" />
+												name="quantite" id ="quantit" />
 										</div>
 									</div>
 
-									<a class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}"
-<%-- 									<a class="btn btn-important btn-add-cart" href="CartControleur?prodName=${product.getName()}&prodQuantity=${product.getQuantity()}&prodPrice=${product.getPrice()}"
- --%>										
+<%-- 									<a id="quantiteAjour" class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}&quantitAcheter=${document.getElementById('quantit').value}"								d	
+										data-ajax-handler="shop:onAddToCart"
+										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
+										to Cart </a><br> <br> --%>
+									<a id="quantiteAjour" class="btn btn-important btn-add-cart" href="CartControleur?productNameKey=${product.key}&quantitAcheter=${document.getElementById('quantit').value}"								d	
 										data-ajax-handler="shop:onAddToCart"
 										data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add
 										to Cart </a><br> <br>
@@ -216,6 +218,7 @@
 	<script src="/cms/core.js"></script>
 	<script
 		src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/themes/hype/resources/js/main.js?1426718990"></script>
+		<script type="text/css"> <%@ include file="js/ecommerceWeb.js"%> </script>
 
 
 </body>
