@@ -58,6 +58,20 @@ public class Product {
 	    }
 
 	
+	public Product(int id, String name, String description, int price, Timestamp last_update, int quantity,
+			Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.last_update = last_update;
+		this.quantity = quantity;
+		this.category = category;
+	}
+
+
+
 	public void increment(){
 		this.quantity++;
 	}
