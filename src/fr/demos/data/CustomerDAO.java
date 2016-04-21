@@ -36,15 +36,15 @@ public class CustomerDAO implements ElementDAO {
 		// On demande une connexion au pool
 		Connection cx = this.ds.getConnection();
 		//On va pouvoir preparer notre requette SQL
-		PreparedStatement psmt = cx.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?)");
+		PreparedStatement psmt = cx.prepareStatement("insert into customer values (NULL,?,?,?,?,?,?)");
 
-		psmt.setString(2, client.getName());
-		psmt.setString(3, client.getEmail());
-		psmt.setString(4, client.getPhone());
-		psmt.setString(5, client.getAdress());
-		psmt.setString(6, client.getCity());
-		psmt.setInt(7, client.getCodePostal());
-		psmt.setInt(8, client.getCustomerorder().getId());
+		psmt.setString(1, client.getName());
+		psmt.setString(2, client.getEmail());
+		psmt.setString(3, client.getPhone());
+		psmt.setString(4, client.getAdress());
+		psmt.setString(5, client.getCity());
+		psmt.setInt(6, client.getCodePostal());
+		//psmt.setInt(7, client.getCustomerorder().getId());
 
 		psmt.executeUpdate();
 
@@ -80,7 +80,7 @@ public class CustomerDAO implements ElementDAO {
 			String customer_adress = rs.getString(5);
 			String customer_city = rs.getString(6);
 			int customer_codePostal=rs.getInt(7);
-			int customer_order=rs.getInt(8);
+			//int customer_order=rs.getInt(8);
 
 
 			Customer client = new Customer(customer_id, customer_email, customer_name, customer_adress, 
@@ -93,7 +93,7 @@ public class CustomerDAO implements ElementDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getDBElement(String identifier) throws Exception {
+	public Object getDBElement(String identifier) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

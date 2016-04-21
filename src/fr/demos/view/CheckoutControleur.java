@@ -114,33 +114,33 @@ public class CheckoutControleur extends HttpServlet {
 
 				Customer client= new Customer(email, nom, adress, codePostalInt, phone, city, clientOrder);
 
-//				try {
-//					ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
-//					for (Product p:ArrayListProduit){
-//						Livre l = (Livre) p;
-//
-//						dao.decrementFromDB(l.getName(), quantiteAcheteInt);
-//					}
-//
-//				}catch (MessageException e){ 
-//					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
-//					e.printStackTrace();
-//				}catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
-//					e.printStackTrace();
-//
-//				}
+				try {
+					ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
+					for (Product p:ArrayListProduit){
+						Livre l = (Livre) p;
 
-//				try {
-//					CustomerDAO dao= new CustomerDAO("jdbc/ecommerceweb");
-//					dao.saveToDB(client);
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					request.setAttribute("customerAddErreur", e.getMessage());
-//					e.printStackTrace();
-//
-//				}
+						dao.decrementFromDB(l.getName(), quantiteAcheteInt);
+					}
+
+				}catch (MessageException e){ 
+					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
+					e.printStackTrace();
+				}catch (Exception e) {
+					// TODO Auto-generated catch block
+					//request.setAttribute("quantiteAcheterDecrementErreur", e.getMessage());
+					e.printStackTrace();
+
+				}
+
+				try {
+					CustomerDAO dao= new CustomerDAO("jdbc/ecommerceweb");
+					dao.saveToDB(client);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("customerAddErreur", e.getMessage());
+					e.printStackTrace();
+
+				}
 
 				try {
 					CustomerOrderDAO dao= new CustomerOrderDAO("jdbc/ecommerceweb");

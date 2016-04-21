@@ -33,7 +33,7 @@ public class CustomerOrderDAO implements ElementDAO {
 				// On demande une connexion au pool
 				Connection cx = this.ds.getConnection();
 				//On va pouvoir preparer notre requette SQL
-				PreparedStatement psmt = cx.prepareStatement("insert into customerorder values (?,?,?)");
+				PreparedStatement psmt = cx.prepareStatement("insert into customerorder values (NULL,?,?,?)");
 				
 
 				psmt.setInt(1, clientOrder.getAmount());
@@ -61,7 +61,7 @@ public class CustomerOrderDAO implements ElementDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getDBElement(String identifier) throws Exception {
+	public Object getDBElement(String identifier) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

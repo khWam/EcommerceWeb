@@ -23,7 +23,7 @@ public class CategoryDAO implements ElementDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getDBElement(String identifier) throws Exception {
+	public Object getDBElement(String identifier) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

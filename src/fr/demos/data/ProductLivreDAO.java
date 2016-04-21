@@ -108,35 +108,41 @@ public class ProductLivreDAO implements ElementDAO {
 	}
 
 	@Override
-	public HashMap<String, Object> getDBElement(String identifier) throws Exception {
+	public Object getDBElement(String identifier) throws Exception {
+		HashMap<String, Object> mapProduct= this.getAllDBElements();
+		Object product;
+		
+		try{
+			product = mapProduct.get(identifier);
+			
+		}catch(NullPointerException e){throw new MessageException("the product database is empty!");}
+//		// On demande une connexion au pool
+//		Connection cx = this.ds.getConnection();
+//		//On va pouvoir preparer notre requette SQL
+//		PreparedStatement psmt = cx.prepareStatement("select product_id, name, descreption,price, last_update,"
+//				+ "quantity,category_id, isbn,author,genre,edition from product where name= ?");
+//		psmt.setString(1, identifier);
+//		ResultSet rs = psmt.executeQuery();
+//
+//		int product_id = rs.getInt(1);
+//		String product_name = rs.getString(2);		
+//		String product_discreption =rs.getString(3);
+//		int product_price =rs.getInt(4);
+//		Timestamp product_date = rs.getTimestamp(5);
+//		int product_quantity = rs.getInt(6);
+//		int product_category_id=rs.getInt(7);
+//		String product_isbn=rs.getString(8);
+//		String product_author=rs.getString(9);
+//		String product_genre=rs.getString(10);
+//		String product_edition = rs.getString(11);
+//		Livre prod = new Livre(product_id,product_name,product_discreption,product_price,product_date
+//				, product_quantity,new Category(product_category_id),product_isbn,product_author,
+//				product_edition,product_genre);
+//		Object obj = (Object) prod;
+//		HashMap<String, Object> mapProduct = new HashMap<>();
+//		mapProduct.put(prod.getName(), obj);	
 
-		// On demande une connexion au pool
-		Connection cx = this.ds.getConnection();
-		//On va pouvoir preparer notre requette SQL
-		PreparedStatement psmt = cx.prepareStatement("select product_id, name, descreption,price, last_update,"
-				+ "quantity,category_id, isbn,author,genre,edition from product where name= ?");
-		psmt.setString(1, identifier);
-		ResultSet rs = psmt.executeQuery();
-
-		int product_id = rs.getInt(1);
-		String product_name = rs.getString(2);		
-		String product_discreption =rs.getString(3);
-		int product_price =rs.getInt(4);
-		Timestamp product_date = rs.getTimestamp(5);
-		int product_quantity = rs.getInt(6);
-		int product_category_id=rs.getInt(7);
-		String product_isbn=rs.getString(8);
-		String product_author=rs.getString(9);
-		String product_genre=rs.getString(10);
-		String product_edition = rs.getString(11);
-		Livre prod = new Livre(product_id,product_name,product_discreption,product_price,product_date
-				, product_quantity,new Category(product_category_id),product_isbn,product_author,
-				product_edition,product_genre);
-		Object obj = (Object) prod;
-		HashMap<String, Object> mapProduct = new HashMap<>();
-		mapProduct.put(prod.getName(), obj);	
-
-		return mapProduct;
+		return product;
 	}
 
 	@Override
@@ -147,17 +153,17 @@ public class ProductLivreDAO implements ElementDAO {
 
 
 	public void decrementFromDB(String identifier, int quantiteAcheter) throws Exception {
-		HashMap<String, Object> product;
-		product =this.getDBElement(identifier);
-		Livre livre = (Livre) product.get(identifier);
+		Livre livre;
+		livre =(Livre)this.getDBElement(identifier);
 		if (livre.getQuantity()>quantiteAcheter){
 			// On demande une connexion au pool
 			Connection cx = this.ds.getConnection();
 			//On va pouvoir preparer notre requette SQL
 			PreparedStatement psmt = cx.prepareStatement("update product set quantity=? where name= ?");
-			psmt.setString(1, identifier);
 			int newQuantity = livre.getQuantity()-quantiteAcheter;
-			psmt.setInt(2, newQuantity);
+			psmt.setInt(1, newQuantity);
+			psmt.setString(2, identifier);
+
 			psmt.executeUpdate();
 
 			//on rend la connexion
