@@ -51,13 +51,14 @@ body {
         .navbar{
           background: #ffffff;
         }
-        #intro-image, #login-page, #about-bg{
-            background: url(./img/Books.jpg)no-repeat top center;
+#intro-image, #login-page, #about-bg{
+            background: url(http://img.talkandroid.com/uploads/2013/11/stack_of_books.jpg)no-repeat top center !important;
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
               background-size: cover;
         }
+
         #intro-title{
           background:
         }
@@ -73,7 +74,7 @@ body {
  * Client-side jQuery library for LemonStand
  * Extends jQuery with two methods, `$.getForm` and `$.sendRequest`.
  */
-(function ($, window, document) {
+$(function ($, window, document) {
   var noop = function () {}
     , popup = function (res) { window.alert(res.message || "Request failed.") }
 
