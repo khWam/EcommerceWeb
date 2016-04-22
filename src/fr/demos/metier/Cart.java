@@ -13,7 +13,9 @@ public class Cart {
 	public void addToCart(Product produit){
 		cartItems.put(produit.getName(),produit);
 	}
-	
+	public void removeFromCart(Product produit){
+		cartItems.remove(produit.getName());
+	}
 	
 	public HashMap<String, Product> getCartItems() {
 		return cartItems;

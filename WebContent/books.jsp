@@ -51,7 +51,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a class="navbar-brand" id="logo-mob"
-				href="http://localhost:8080/EcommerceWeb/index.html">Market O
+				href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 				Zone</a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#bs-example-navbar-collapse-1">
@@ -70,7 +70,7 @@
 						STORE</a></li>
 				<li><a href="//hype.lemonstand.com/about">ABOUT</a></li>
 				<li><a class="navbar-brand" id="logo"
-					href="http://localhost:8080/EcommerceWeb/index.html">Market O
+					href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"

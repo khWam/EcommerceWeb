@@ -59,6 +59,7 @@ public class CartControleur extends HttpServlet {
 		Cart cart = new Cart();
 		HashMap<String, Product> listProduit;
 		HashMap<String, Product> listCatalog=(HashMap<String, Product>)session.getAttribute("listProduct");
+
 		//	if (session.isNew()) {
 		//		System.out.println("Session nouvelle");
 		//		listProduit = new Cart() ;
@@ -76,23 +77,45 @@ public class CartControleur extends HttpServlet {
 		}
 
 
+		String action= request.getParameter("Submit");
+		if (action!=null && action.equals("Add to Cart")){
 
-		String produitName= request.getParameter("productNameKey");
-		String quantiteAcheter= request.getParameter("quantitAcheter");
-		int quantiteAcheterInt= Integer.parseInt(quantiteAcheter);
-		//on ne peut acheter que un produit pour le moment
-		session.setAttribute("quantiteAcheter", quantiteAcheterInt);
 
-		Product prod = listCatalog.get(produitName);
-		System.out.println("Produit recuperé : " + prod);
+			String produitName= request.getParameter("productNameKey");
+			String quantiteAcheter= request.getParameter("quantitAcheter");
+			int quantiteAcheterInt= Integer.parseInt(quantiteAcheter);
+			//on ne peut acheter que un produit pour le moment
+			session.setAttribute("quantiteAcheter", quantiteAcheterInt);
 
-		cart.setCartItems(listProduit);
-		cart.addToCart(prod);
-		listProduit = cart.getCartItems();
-		System.out.println("List produit dans le cart : " + listProduit);
-		//listProduit.addToCart(produit);
-		session.setAttribute("listProductCart", listProduit);
-		rd.forward(request, response);
+			Product prod = listCatalog.get(produitName);
+			System.out.println("Produit recuperé : " + prod);
+
+			cart.setCartItems(listProduit);
+			cart.addToCart(prod);
+			listProduit = cart.getCartItems();
+			System.out.println("List produit dans le cart : " + listProduit);
+			//listProduit.addToCart(produit);
+			session.setAttribute("listProductCart", listProduit);
+		}
+
+		else if (action!=null && action.equals("X")){
+
+
+			String produitName= request.getParameter("productNameKey");
+			//	int quantiteAcheterInt= (Integer)session.getAttribute("quantitAcheter");
+			//on ne peut acheter que un produit pour le moment
+
+			Product prod = listCatalog.get(produitName);
+			System.out.println("Produit supprimer: " + prod);
+
+			cart.setCartItems(listProduit);
+			cart.removeFromCart(prod);
+			listProduit = cart.getCartItems();
+			System.out.println("List produit dans le cart (apres suppression) : " + listProduit);
+			//listProduit.addToCart(produit);
+			session.setAttribute("listProductCart", listProduit);
+		}
+
 		//	ArrayList<ArrayList<String>> listProduit;
 		//	if (session.isNew()) {
 		//		System.out.println("Session nouvelle");
@@ -122,7 +145,7 @@ public class CartControleur extends HttpServlet {
 		//	System.out.println("Add produit, ListeProduit : " + listProduit);
 		//	session.setAttribute("listProductCart", listProduit);
 		//	rd.forward(request, response);
-
+		rd.forward(request, response);
 	}
 
 }

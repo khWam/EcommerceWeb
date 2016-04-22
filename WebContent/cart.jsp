@@ -11,7 +11,7 @@
 <!-- CSS file -->
 
 <style type="text/css">
-<%@ include file="css/ecommerceWeb2.css"%>
+<%@include file="css/ecommerceWeb2.css"%>
 </style>
 <!--  <link rel="stylesheet" type="text/css" href="./css/ecommerceWeb.css">   -->
 
@@ -51,7 +51,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a class="navbar-brand" id="logo-mob"
-				href="http://localhost:8080/EcommerceWeb/index.html">Market O
+				href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 				Zone</a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#bs-example-navbar-collapse-1">
@@ -70,14 +70,15 @@
 						STORE</a></li>
 				<li><a href="//hype.lemonstand.com/about">ABOUT</a></li>
 				<li><a class="navbar-brand" id="logo"
-					href="http://localhost:8080/EcommerceWeb/index.html">Market O
+					href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 						Zone</a></li>
 				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
-					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
-						id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>
-				<li id="mobile-cart"><a href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a>
-				</li>
+					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span
+						class="hidden-xs" id="navbar-totals">${listProductCart.size()}
+							ITEMS</span></a></li>
+				<li id="mobile-cart"><a
+					href="http://localhost:8080/EcommerceWeb/cart.jsp">CART</a></li>
 				<li id="mobile-cart"><a
 					href="http://localhost:8080/EcommerceWeb/checkout.jsp">CHECKOUT</a></li>
 			</ul>
@@ -85,81 +86,95 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid --> </nav>
-	 <div class="wrapper">
-    	<div class="row content" id="cartt">
-  <form  class="custom" method="post" action="/cart">
-    <div id="cart-content"><div class="row">
-    
-
-<p id="title-p-d">SHOPPING CART</p>
-<div class="col-md-12">
-    
-    <div class="items-holder">
-        
-        	<div class="row content" id="cart-items">
-		<div class="col-sm-6">
-			Product
-		</div>
-		<div class="col-sm-3">
-			Quantity
-		</div>
-		<div class="col-sm-3">
-			Item Total
-		</div>
-	</div>
+	<div class="wrapper">
+		<div class="row content" id="cartt">
+			<form class="custom" method="post" action="CartControleur">
+				<div id="cart-content">
+					<div class="row">
 
 
-<c:set var="TotalPrice" value="0" scope="page" />
-<c:forEach var="product" items="${sessionScope.listProductCart}">
-	<div class="row" id="cart-row">
+						<p id="title-p-d">SHOPPING CART</p>
+						<div class="col-md-12">
 
-			<div class="col-sm-2" id="cart-img">
-				<img src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_autoxauto-jpg-keep-ratio.png?1416257987" alt="3 Pasta&#039;s">
-			</div>
-		<div class="row" id="align-middle">
-			<div class="col-sm-4">
-				<a href="/product/3-pasta-s">${product.key}</a>
-        			</div>
-			<div class="col-sm-2">
-									<input type="text" id="quantity" name="item_quantity[57160c4917c17]" value="${quantiteAcheter}">
+							<div class="items-holder">
+
+								<div class="row content" id="cart-items">
+									<div class="col-sm-6">Product</div>
+									<div class="col-sm-3">Quantity</div>
+									<div class="col-sm-3">Item Total</div>
+								</div>
+
+
+								<c:set var="TotalPrice" value="0" scope="page" />
+								<c:forEach var="product" items="${sessionScope.listProductCart}">
+									<div class="row" id="cart-row">
+
+										<div class="col-sm-2" id="cart-img">
+											<img
+												src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_autoxauto-jpg-keep-ratio.png?1416257987"
+												alt="3 Pasta&#039;s">
+										</div>
+										<div class="row" id="align-middle">
+											<div class="col-sm-4">
+												<a href="/product/3-pasta-s">${product.key}</a>
+											</div>
+											<div class="col-sm-2">
+												<input type="text" id="quantity"
+													name="item_quantity[57160c4917c17]"
+													value="${quantiteAcheter}">
+											</div>
+											<div class="col-sm-3 col-xs-12" id="item-middle">
+												<p>
+													<span class="pull-left">$${product.value.getPrice()}</span>
+
+
+													<input type="hidden" name="productNameKey"
+														value="${product.key}" /> <input type="hidden"
+														name="quantitAcheter" value="${quantiteAcheter}" />
+
+												</p>
+												<div class="col-sm-2" id="item-middle">
+													<input type="submit" class="btn btn-important btn-add-cart" name="Submit" value="X"
+														>
+												</div>
+
+											</div>
+											
+										</div>
+										
+									</div>
+
+									<c:set var="TotalPrice"
+										value="${TotalPrice + (quantiteAcheter * product.value.price)}"
+										scope="page" />
+								</c:forEach>
+
 							</div>
-			<div class="col-sm-3 col-xs-12" id="item-middle">
-				<p>
-					<span class="pull-left">$${product.value.getPrice()}</span>
-											<a class="col-sm-3" id="item-close" href="#close" 
-						data-ajax-handler="shop:cart" 
-												data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals"
-						data-ajax-extra-fields="delete_item='57160c4917c17'"><i class="fa fa-times" id="remove-cart-item"></i></a>
-									</p>
 
-				
-			</div>
+						</div>
+
+						<div class="col-md-3 row">
+							<p>Order Summary</p>
+							<ul class="price-list list-group">
+								<li class="list-group-item important">Total: $${TotalPrice}</li>
+							</ul>
+							<div class="col-xs-12 form-group" id="coupon">
+								<input type="text" class="form-control" id="coupon-code"
+									name="coupon" placeholder="Coupon Code" value="" />
+							</div>
+							<a class="btn btn-default col-xs-12 btn-lg solid" href="#"
+								data-ajax-handler="shop:cart"
+								data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update
+								Cart <i class="fa fa-refresh"></i>
+							</a> <a class="col-xs-12 btn btn-important solid btn-lg"
+								href="http://localhost:8080/EcommerceWeb/checkout.jsp">Checkout</a>
+						</div>
+
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
-	
-<c:set var="TotalPrice" value="${TotalPrice + (quantiteAcheter * product.value.price)}" scope="page"/>
-</c:forEach>
-
-    </div>
-
-</div>
-
-<div class="col-md-3 row">
-    <p>Order Summary</p>
-    <ul class="price-list list-group">
-                        <li class="list-group-item important">Total: $${TotalPrice}</li>
-    </ul>
-    <div class="col-xs-12 form-group" id="coupon">
-        <input type="text" class="form-control" id="coupon-code" name="coupon" placeholder="Coupon Code" value="" />
-    </div>
-    <a class="btn btn-default col-xs-12 btn-lg solid" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals">Update Cart <i class="fa fa-refresh"></i></a>
-        <a class="col-xs-12 btn btn-important solid btn-lg" href="http://localhost:8080/EcommerceWeb/checkout.jsp">Checkout</a>
-    </div>
-
-</div></div>
-  </form>    
- </div> 
-    </div>
 	<div class="main-footer">
 		<div class="row">
 			<div class="col-md-12">
