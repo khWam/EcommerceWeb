@@ -11,6 +11,7 @@ public class Product {
 	private Timestamp last_update;
 	private int quantity;
 	private Category category;
+	public int quantityAcheter = 0;
 	
 	
 	
@@ -163,6 +164,18 @@ public class Product {
 	 */
 	public void setCategory(Category category) { 
 		 this.category = category; 
+	}
+
+
+
+	public int getQuantityAcheter() {
+		return quantityAcheter;
+	}
+
+
+
+	public void setQuantityAcheter(int quantityAchete) {
+		this.quantityAcheter = quantityAchete;
 	} 
 
 }

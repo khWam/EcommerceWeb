@@ -85,9 +85,10 @@ public class CartControleur extends HttpServlet {
 			String quantiteAcheter= request.getParameter("quantitAcheter");
 			int quantiteAcheterInt= Integer.parseInt(quantiteAcheter);
 			//on ne peut acheter que un produit pour le moment
-			session.setAttribute("quantiteAcheter", quantiteAcheterInt);
+			//session.setAttribute("quantiteAcheter", quantiteAcheterInt);
 
 			Product prod = listCatalog.get(produitName);
+			prod.setQuantityAcheter(quantiteAcheterInt);
 			System.out.println("Produit recuperé : " + prod);
 
 			cart.setCartItems(listProduit);

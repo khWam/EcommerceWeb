@@ -84,7 +84,8 @@ public class CheckoutControleur extends HttpServlet {
 			String city = request.getParameter("billingInfo[city]");
 			String codePostal = request.getParameter("billingInfo[postalCode]");
 
-			int quantiteAcheteInt =(Integer) session.getAttribute("quantiteAcheter");
+			//int quantiteAcheteInt =(Integer) session.getAttribute("quantiteAcheter");
+			int quantiteAcheteInt; 
 
 
 
@@ -118,6 +119,7 @@ public class CheckoutControleur extends HttpServlet {
 					ProductLivreDAO dao = new ProductLivreDAO("jdbc/ecommerceweb");
 					for (Product p:ArrayListProduit){
 						Livre l = (Livre) p;
+						quantiteAcheteInt=l.getQuantityAcheter();
 
 						dao.decrementFromDB(l.getName(), quantiteAcheteInt);
 					}

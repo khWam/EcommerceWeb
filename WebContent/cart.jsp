@@ -121,7 +121,7 @@
 											<div class="col-sm-2">
 												<input type="text" id="quantity"
 													name="item_quantity[57160c4917c17]"
-													value="${quantiteAcheter}">
+													value="${product.value.quantityAcheter}">
 											</div>
 											<div class="col-sm-3 col-xs-12" id="item-middle">
 												<p>
@@ -130,7 +130,7 @@
 
 													<input type="hidden" name="productNameKey"
 														value="${product.key}" /> <input type="hidden"
-														name="quantitAcheter" value="${quantiteAcheter}" />
+														name="quantitAcheter" value="${product.value.quantityAcheter}" />
 
 												</p>
 												<div class="col-sm-2" id="item-middle">
@@ -145,7 +145,7 @@
 									</div>
 
 									<c:set var="TotalPrice"
-										value="${TotalPrice + (quantiteAcheter * product.value.price)}"
+										value="${TotalPrice + (product.value.quantityAcheter * product.value.price)}"
 										scope="page" />
 								</c:forEach>
 
