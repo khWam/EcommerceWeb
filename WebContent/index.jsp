@@ -55,11 +55,11 @@
 				<ul class="nav navbar-nav text-center">
 					<li><a href="http://localhost:8080/EcommerceWeb/category.jsp">THE
 							STORE</a></li>
-					<li><a href="//hype.lemonstand.com/about">ABOUT</a></li>
+					<li><a href="#">ABOUT</a></li>
 					<li><a class="navbar-brand" id="logo"
 						href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 							Zone</a></li>
-					<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
+					<li><a href="#">LOGIN</a></li>
 					<li id="normal-cart"><a id="normal-carts"
 						href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
 							id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>

@@ -68,11 +68,11 @@
 			<ul class="nav navbar-nav text-center">
 				<li><a href="http://localhost:8080/EcommerceWeb/category.jsp">THE
 						STORE</a></li>
-				<li><a href="//hype.lemonstand.com/about">ABOUT</a></li>
+				<li><a href="#">ABOUT</a></li>
 				<li><a class="navbar-brand" id="logo"
 					href="http://localhost:8080/EcommerceWeb/index.jsp">Market O
 						Zone</a></li>
-				<li><a href="//hype.lemonstand.com/login">LOGIN</a></li>
+				<li><a href="#">LOGIN</a></li>
 				<li id="normal-cart"><a id="normal-carts"
 					href="http://localhost:8080/EcommerceWeb/cart.jsp"><span class="hidden-xs"
 						id="navbar-totals">${listProductCart.size()} ITEMS</span></a></li>
@@ -223,7 +223,7 @@
   	<div class="row" id="cart-row">
 
 			<div class="col-sm-2" id="cart-img" style="padding:0;">
-				<img src="//d2pm12cz12gs8x.cloudfront.net/store-hype-543eddf2617d2/uploaded/thumbnails/4a_autoxauto-jpg-keep-ratio.png?1416257987" alt="3 Pasta&#039;s">
+				<img src="http://www.startupremarkable.com/wp-content/uploads/2015/02/a-book-a-week-image.jpg">
 			</div>
 			<div class="col-sm-10" style="padding-right:0px;">
 				<a href="/product/3-pasta-s">${product.key}</a><br>
